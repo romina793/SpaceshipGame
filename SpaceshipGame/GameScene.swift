@@ -15,11 +15,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let shipCategory = 0x1 << 1
     let obstacleCategory = 0x1 << 2
     let backgroundVelocity : CGFloat = 3.0
-    let missileVelocity : CGFloat = 6.0
+    let missileVelocity : CGFloat = 5.0
     var lastMissileAdded:TimeInterval = 0
 
     override func didMove(to view: SKView) {
-        /* Setup your scene here */
         self.backgroundColor = SKColor.white
         self.initializingScrollingBackground()
         self.addShip()
@@ -52,17 +51,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        /* Called when a touch begins */
-
         for touch: AnyObject in touches {
-            let location = touch.location(in: self) //1
-            if location.x > ship.position.x { //2
-                if ship.position.x < 300 { //3
-                    ship.run(actionMoveUp) //4
+            let location = touch.location(in: self)
+            if location.x > ship.position.x {
+                if ship.position.x < 300 {
+                    ship.run(actionMoveUp)
                 }
             } else {
                 if ship.position.x > 50 {
-                    ship.run(actionMoveDown) //5
+                    ship.run(actionMoveDown) 
                 }
             }
         }

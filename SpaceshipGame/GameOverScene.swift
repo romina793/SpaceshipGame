@@ -13,24 +13,15 @@ class GameOverScene: SKScene {
     override init(size: CGSize) {
         super.init(size: size)
         self.backgroundColor = SKColor.black
+        self.createGameOverButton()
+        self.createReplayButton()
 
-        let message = "Game over"
-        let label = SKLabelNode(fontNamed: "Helvetica-Bold")
-        label.text = message
-        label.fontSize = 40
-        label.fontColor = SKColor.red
-        label.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-        self.addChild(label)
-        
-        //4
-        let replayMessage = "Volver a jugar"
-        let replayButton = SKLabelNode(fontNamed: "Helvetica-Bold")
-        replayButton.text = replayMessage
-        replayButton.fontColor = SKColor.white
-        replayButton.position = CGPoint(x: self.size.width/2, y: 50)
-        replayButton.name = "replay"
-        self.addChild(replayButton)
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches {
@@ -45,8 +36,24 @@ class GameOverScene: SKScene {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func createGameOverButton(){
+        let message = "Game over"
+        let label = SKLabelNode(fontNamed: "Helvetica-Bold")
+        label.text = message
+        label.fontSize = 40
+        label.fontColor = SKColor.red
+        label.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        self.addChild(label)
+    }
+    
+    func createReplayButton() {
+        let replayMessage = "Volver a jugar"
+        let replayButton = SKLabelNode(fontNamed: "Helvetica-Bold")
+        replayButton.text = replayMessage
+        replayButton.fontColor = SKColor.white
+        replayButton.position = CGPoint(x: self.size.width/2, y: 50)
+        replayButton.name = "replay"
+        self.addChild(replayButton)
     }
     
 }
